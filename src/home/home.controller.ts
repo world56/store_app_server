@@ -1,5 +1,4 @@
 import { Controller, Get } from '@nestjs/common';
-import { get } from 'http';
 
 @Controller('home')
 export class HomeController {
