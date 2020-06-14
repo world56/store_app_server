@@ -6,13 +6,14 @@ export class HomeController {
 
     @Get('/')
     index(): string {
-        return "你好，home页面";
+        console.log('run');
+        return "你好，home页面!2222!!!@@@";
     };
 
 
     @Get('/use')
-    use(): number[] {
-        return [1, 2, 3, 4];
+    use(): Array<number | string> {
+        return [1, 2, 3, 4, '@abc'];
     };
 
 
