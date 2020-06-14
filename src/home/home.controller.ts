@@ -1,19 +1,31 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Body, Param, Post, HttpCode, Query } from '@nestjs/common';
+
+/**
+ * @param @Body POST请求专用
+ * @param @Param  GET /:id 专用
+ * @param @Query  GET query专用
+ */
 
 @Controller('home')
 export class HomeController {
 
-
     @Get('/')
-    index(): string {
-        console.log('run');
-        return "你好，home页面!2222!!!@@@";
+    @HttpCode(200)
+    index(@Query() param): string {
+        console.log('@GET请求!', param);
+        return `GET-请求 $${param.queryParameters}`;
     };
-
 
     @Get('/use')
     use(): Array<number | string> {
         return [1, 2, 3, 4, '@abc'];
+    };
+
+    @Post('/')
+    @HttpCode(200)
+    testPost(@Body() body, @Param() param): string {
+        console.log('@POST请求!', body);
+        return `POST-请求 ${body.data}`;
     };
 
 
