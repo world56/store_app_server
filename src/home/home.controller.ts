@@ -11,7 +11,7 @@ export class HomeController {
 
     @Get('/')
     @HttpCode(200)
-    index(@Query() param): string {
+    index(@Query() param: { queryParameters: string }): string {
         console.log('@GET请求!', param);
         return `GET-请求 $${param.queryParameters}`;
     };
@@ -23,7 +23,7 @@ export class HomeController {
 
     @Post('/')
     @HttpCode(200)
-    testPost(@Body() body, @Param() param): string {
+    testPost(@Body() body: { data: string }): string {
         console.log('@POST请求!', body);
         return `POST-请求 ${body.data}`;
     };
